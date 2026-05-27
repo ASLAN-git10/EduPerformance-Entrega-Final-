@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "Backend (Spring Boot)",
+			"path": "EduPerformanceBack"
+		},
+		{
+			"name": "Frontend (React + Vite)",
+			"path": "EduPerformanceFront"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

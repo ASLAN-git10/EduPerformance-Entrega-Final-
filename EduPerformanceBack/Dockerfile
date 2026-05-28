@@ -3,8 +3,8 @@
 # =========================================================================
 
 # --- ETAPA 1: CONSTRUCCIÓN (BUILD) ---
-# Usamos una imagen de Maven optimizada con JDK 21 (Eclipse Temurin)
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+# Usamos una imagen de Maven optimizada con JDK 17 (Eclipse Temurin)
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copiamos solo el pom.xml para descargar y cachear las dependencias primero
@@ -18,7 +18,7 @@ RUN mvn clean package -DskipTests
 
 # --- ETAPA 2: EJECUCIÓN (RUNTIME) ---
 # Usamos una imagen de JRE ligera de Eclipse Temurin para el entorno de producción
-FROM eclipse-temurin:21-jre-jammy
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 # Copiamos el archivo JAR compilado desde la etapa anterior

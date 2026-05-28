@@ -1,0 +1,35 @@
+# =========================================================================
+# RENDER BLUEPRINT SPECIFICATION (INFRAESTRUCTURA COMO CÓDIGO)
+# =========================================================================
+# Con este archivo, puedes subir tu repositorio a Render y desplegará
+# automáticamente el backend usando el Dockerfile con un solo clic.
+
+services:
+  # 🚀 Servicio Web del Backend (Spring Boot + Java 21)
+  - type: web
+    name: eduperformance-backend
+    env: docker
+    dockerfilePath: EduPerformanceBack/Dockerfile
+    dockerContext: EduPerformanceBack
+    plan: free # Usa el plan gratuito de Render por defecto
+    branch: main # Rama del repositorio para el despliegue automático (cámbiala si es necesario)
+    envVars:
+      # Puerto dinámico de escucha
+      - key: PORT
+        value: 8080
+
+      # Configuración de Base de Datos (Conexión por defecto a Prisma Postgres Serverless)
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://pooled.db.prisma.io:5432/postgres?sslmode=require&prepareThreshold=0
+      - key: SPRING_DATASOURCE_USERNAME
+        value: 6a3956b34fe807c585ae837087c7ccd13b583b1fa63ca5b809925e0b9d7109fb
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: sk_jCoAE-TUeiGkOmZd-9F0W
+
+      # URL de este servicio web en producción (se actualizará en el dashboard de Render)
+      - key: APP_URL
+        value: https://eduperformance-backend.onrender.com
+
+      # Orígenes CORS permitidos (reemplazar con tu URL de Vercel una vez desplegado el frontend)
+      - key: CORS_ALLOWED_ORIGINS
+        value: http://localhost:3000,http://localhost:4200,http://localhost:8081,http://localhost:5173

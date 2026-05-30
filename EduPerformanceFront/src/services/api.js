@@ -1,14 +1,14 @@
 import axios from "axios";
 
 // Configuración centralizada de Axios apuntando al Backend de Spring Boot
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://eduperformance-backend.onrender.com/api";
 
 export const apiClient = axios.create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 6000, // Timeout premium de 6 segundos
+  timeout: 60000, // Timeout extendido de 60s para manejar cold start de Render Free Tier
 });
 
 // Variable para rastrear de forma reactiva si el backend está en línea

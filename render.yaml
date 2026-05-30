@@ -30,6 +30,6 @@ services:
       - key: APP_URL
         value: https://eduperformance-backend.onrender.com
 
-      # Orígenes CORS permitidos (reemplazar con tu URL de Vercel una vez desplegado el frontend)
+      # Orígenes CORS permitidos (Frontend en Vercel + entornos locales de desarrollo)
       - key: CORS_ALLOWED_ORIGINS
-        value: http://localhost:3000,http://localhost:4200,http://localhost:8081,http://localhost:5173
+        value: https://edu-performance-entrega-final.vercel.app,http://localhost:3000,http://localhost:4200,http://localhost:8081,http://localhost:5173
